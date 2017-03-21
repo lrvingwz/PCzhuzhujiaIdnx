@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="Keywords" content="{$siteinfo['Keywords']}" />
+	<meta name="Descript" content="{$siteinfo['Descript']}" />
+	<title>住宿列表-{$siteinfo['Title']}</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/font/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/Public.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/hotel_book.css">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="__PUBLIC__/css/city-picker.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="__PUBLIC__/css/cityselect.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0W7d0tVaQywDAvuFdbWYlt5QUMMP4Vi"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+    <script src="__PUBLIC__/js/city-picker.data.js"></script>
+	<script src="__PUBLIC__/js/city-picker.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/cityselect.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/gotel_bool.js"></script>				
+    <script type="text/javascript">
+	       $(document).ready(function(){
+	    	   var test=new Vcity.CitySelector({input:'citySelect'});
+	    	   $('#citySelect').val("{$_SESSION['city']}");
+	    	   $("#searchCity").click(function(){
+	    		   $defaultCity= $("#city span").eq(0).text();
+	    		   $city= $(".city").eq(0).text();
+	    		   $s_province = $("#city span").eq(3).text();
+	    		   $s_city     = $("#city span").eq(4).text();
+	    		   $s_county   = $("#city span").eq(5).text();
+	    		   $citys  = $defaultCity+$s_province+$s_city+$s_county;
+	    		   if($citys == $defaultCity){
+	    			   //alert('请选择城市!');
+	    			   //return false;
+	    			   $('#defaultCity').val($city); 
+	    		   }else{
+	    			   $('#s_provinces').val($s_province);
+	    			   $('#s_citys').val($s_city);
+	    			   $('#s_countys').val($s_county);		    			  
+	    		   }
+	    		   $('#formCity').submit();		   		      			   		    		   
+	    	 });
+            $("#sharedHut").click(function(){
+			           $defaultCitys= $("#city span").eq(0).text();
+		    		   $ss_province = $("#city span").eq(3).text();
+					   $ss_city     = $("#city span").eq(4).text();
+					   $ss_county   = $("#city span").eq(5).text();
+					   $citys  = $defaultCitys+$ss_province+$ss_city+$ss_county;
+					   if($citys == $defaultCitys){
+						   $('#defaultCitys').val($citys); 
+					   }else{
+						   $('#ss_provinces').val($ss_province);
+						   $('#ss_citys').val($ss_city);
+						   $('#ss_countys').val($ss_county);						   
+					   }
+		        	   $("#defaultCitys").val('');
+		    		   $('#formCity1').submit();		   		      			   		    		   
+		    	 });
+             $("#ConditSearch").submit(function(){
+			    if($('#citySelect').val()){
+					return true;
+				}else{
+				    alert('区域不能为空!');
+					return false;
+				}
+			});		
+	       });
+	       function typeName(name){
+	    	   var city = $("#citySelect").val()
+	    	   if(city == ''){
+	    		   alert('请选择区域!');
+	    		   return false;
+	    	   }
+	    	   $("#cityType").val(city);
+	    	   $("#hotel_name").val(name);
+		       $('#hotelType').submit();		   		      			   		    		   
+	       }
+	  </script>
+	<style type="text/css">
+		a{	
+		    text-decoration:none;
+	     }
+	    .page {
+	        width:100%;
+	        padding:30px 15px;
+	        background:#fff;
+	        overflow:hidden
+	    }
+	    .page .first,.page .prev,.page .current,.page .num,.page .current,.page .next,.page 
+	.end {
+	        padding:8px 16px;
+	        margin:0 5px;
+	        display:inline-block;
+	        color:#7b7b7b;
+	        border:1px solid #f2f2f2;
+	        border-radius:5px
+	    }
+	    .page .first:hover,.page .prev:hover,.page .current:hover,.page .num:hover,.page 
+	.current:hover,.page .next:hover,.page .end:hover {
+	        text-decoration:none;
+	        background:#f8f5f5;
+		    border:1px solid #008cba;
+	    }
+	    .page .current {
+	        background-color:#11a750;
+	        color:#fff;
+	        border-radius:5px;
+	        border:1px solid #008cba
+	    }
+	     .page .current:hover {
+	        text-decoration:none;
+	        background:#008cba
+	    }
+	    
+/*左侧悬浮按钮*/
+	.leftSilde{
+		width: 180px;
+		height: 470px;
+		background: #f0f0f0;
+		position: fixed;
+		left:162px;
+		top:50%;
+		margin-top:58px;
+		z-index: 10000;
+	}
+	.leftSilde h3{
+		width: 100%;
+		height: 30px;
+		background: #11a750;
+		color:#fff;
+		font-size: 16px;
+		line-height: 30px;
+		text-indent: 10px;
+		font-weight: normal;
+		margin:0px;
+	}
+	.leftSilde ul{
+		overflow: hidden;
+	}
+	.leftSilde ul li{
+		width: 100%;
+		float: left;
+		height: 28px;
+		line-height: 28px;
+		overflow: hidden;
+		font-size: 14px;
+		padding-left:10px;
+		font-weight: bold;
+	}	
+	.leftSilde ul li:hover{
+	    background:rgba(0,0,0, .1);
+		cursor:pointer;
+	}
+	.leftSilde span.sureBtn{
+		display: block;
+		width: 110px;
+		height: 35px;
+		text-align: center;
+		line-height: 35px;
+		color:#fff;
+		margin:10px auto;
+		background: #57ab24;
+		border-radius: 25px;
+		font-size:12px;
+		cursor: pointer;
+	}
+    </style>
+</head>
+<body>
+	<!-- 顶部登录与欢迎 -->
+	
+	<include file="Public/header" />
+	
+	<!-- 图片背景 -->
+	<div class="pic_bg"></div>
+	<!-- end -->
+	<div class="height80"></div>
+	<form action="{:U('Index/searchArea')}" method="get" id="hotelType">
+	<input type="hidden" name="citySelect" id="cityType" value=""/>
+	<input type="hidden" name="hotel_name" id="hotel_name" value="">
+	<div class="leftSilde" id="hotelName">
+		<h3>住房类型</h3>
+		<ul>
+		    <li><span onclick="typeName()">全部</span></li>
+			<volist name="hotelType" id="hotel">
+				<li><span onclick="typeName('{$hotel.name}')">{$hotel.name}</span></li>
+			</volist>
+		</ul>		
+	</div>
+	</form>
+  <form action="{:U('Index/searchArea')}" method="get" id="ConditSearch">
+	<!-- 条件筛选查找 -->
+	<div class="find_box">
+		<div class="find_head">
+			<ul>
+				<li>
+					<i class="iconfont icon-dizhi"></i>
+					位置
+				</li>
+				<li style="width: 390px;margin-right:40px;">
+					<i class="iconfont icon-daloutubiao"></i>
+					住房类型
+				</li>
+				<li>
+					<i class="iconfont icon-qian"></i>
+					价格
+				</li>
+			</ul>
+		</div>
+		<div class="region">
+			<label>热门区域</label>
+				<input type="text" class="input_sty" id="citySelect" name="citySelect" placeholder="请输入目的地">     			
+		</div>
+		<!-- 单选 -->
+		<div class="check_box" style="width: 390px;margin-right:40px;">
+			<ul>
+			 <volist name="hotelType" id="hotel">
+				<li><label><input type="radio" name="hotel_name" value="{$hotel.name}">{$hotel.name}</label></li>
+			</volist>
+			</ul>
+		</div>
+		<div class="check_box">
+			<ul>
+				<li><label><input type="radio" name="hotel_money" value="100以下">100以下</label></li>
+				<li><label><input type="radio" name="hotel_money" value="100-300">100-300</label></li>
+				<li><label><input type="radio" name="hotel_money" value="300-500">300-500</label></li>
+				<li><label><input type="radio" name="hotel_money" value="500-1000">500-1000</label></li>
+				<li><label><input type="radio" name="hotel_money" value="1000-2000">1000-2000</label></li>
+				<li><label><input type="radio" name="hotel_money" value="2000以上">2000以上</label></li>
+			</ul>
+		   <button class="find_btn" type="submit" style="margin:-100px 0px 0px 233px;">
+				立即查找
+				<i class="iconfont icon-jiantou"></i>
+			</button>
+		</div>
+	</div>
+  </form>
+	<!-- end -->
+	<!-- 主体内容 -->
+	<div class="main_content">
+		<div class="main_head">
+			<ul>
+				<li class="active"><i class="iconfont icon-loupan color11a750"></i>所有住宿</li>
+				<li><i class="iconfont icon-loupan"></i>推荐入驻</li>
+			</ul>
+		</div>
+		<div class="book_hotel_list" style="display: block;">
+			<if condition="$hotel_list !=0">
+			<ul>
+			<volist name="hotel_list" id="v" >
+				<li>
+					<a href="{:U('Hotel/hotelInfo',array('hid'=>$v['id']))}" target="_blank" style="height:152px;width:100%;">
+						<div class="info_box">
+						<span class="pic_left"><if condition="$v.picurl eq 0"><img src="__PUBLIC__/images/no_image.gif" width="169" height="112"><else /><img src="{$siteinfo['Domain']}/hotelpic/{$v.picurl}" width="169" height="112"></if></span>
+					<h3>{$v.name|msubstr=0,18}</h3><span class="right_money">￥{$v.memberprice}/天起</span>
+					<p style="height:20px;float:left;width:200px;margin:-4px 0px 0px 13px;">{$v.type}</p>
+					<div class="icon_list">
+						<!-- <ul> -->
+							<!-- <li class="icon1"></li> -->
+							<!-- <li class="icon2"></li> -->
+							<!-- <li class="icon3"></li> -->
+							<!-- <li class="icon4"></li> -->
+						<!-- </ul> -->
+						<p style="float:left;margin-left:10px;margin-top:4px;">地区：{$v['area']|district=###}</p>
+					</div>
+					<p class="adr">
+					<i><img src="__PUBLIC__/images/icon_adre_03.jpg"></i>
+					地址:{$v.address}<br />
+					电话:{$v.tel}
+					</p>
+					</div>
+					</a>
+				</li>
+			</volist>							
+			</ul>
+			<!-- 分页 -->
+			<div class="height80"></div>
+			<!-- 分页 -->
+			{$page}<p style="float:left;margin:-60px 0px 0px 690px;">总记录:<span style="color:red;">{$count}</span></p>
+			<!-- end -->
+			<div class="height80"></div>
+			<else />
+			  没有找到符合条件的住宿，请重设条件查询。
+			</if>
+		</div>
+		
+		<!-- 附近住宿 -->
+		<div class="book_hotel_list">
+			<ul>
+			<volist name="hotel_f" id="f" >
+				<li>
+					<a href="{:U('Hotel/hotelInfo',array('hid'=>$f['id']))}" target="_blank" style="height:152px;width:100%;">
+						<div class="info_box">
+						<span class="pic_left"><if condition="$f.picurl eq 0"><img src="__PUBLIC__/images/no_image.gif" width="169" height="112"><else /><img src="{$siteinfo['Domain']}/hotelpic/{$f.picurl}" width="169" height="112"></if></span>
+					<h3>{$f.name|msubstr=0,18}</h3>
+					<span class="right_money">￥{$f.memberprice}/天起</span>
+					<p style="height:20px;float:left;width:200px;margin:-4px 0px 0px 13px;">{$f.type}</p>
+					<div class="icon_list">
+						<!-- <ul> -->
+							<!-- <li class="icon1"></li> -->
+							<!-- <li class="icon2"></li> -->
+							<!-- <li class="icon3"></li> -->
+							<!-- <li class="icon4"></li> -->
+						<!-- </ul> -->
+						<p style="float:left;margin-left:10px;margin-top:4px;">地区：{$f['area']|district=###}</p>
+					</div>
+					<p class="adr">
+					<i><img src="__PUBLIC__/images/icon_adre_03.jpg"></i>
+					地址:{$f.address}<br />
+					电话:{$f.tel}
+					</p>
+					</div>
+					</a>
+				</li>
+			</volist>	
+			</ul>
+			<div class="height80"></div>
+		</div>
+		
+	</div>
+	
+	<include file="Public/footer" />
+	
+</body>
+</html>
