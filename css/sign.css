@@ -1,0 +1,18 @@
+.left span.forget_pass{
+	margin-left: 158px;
+
+	font-size: 12px;
+}
+.left span.forget_pass a{
+ 		color:#adadad;
+ }
+ .left span.reg{
+
+	font-size: 12px;
+}
+.left span.reg a{
+ 		color:#e0711f;
+ }
+ .form .left .tj_btn{
+ 	background: #11a750;
+ }

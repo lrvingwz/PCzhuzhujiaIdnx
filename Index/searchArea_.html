@@ -29,6 +29,8 @@
 	    		   $s_county   = $("#city span").eq(5).text();
 	    		   $citys  = $defaultCity+$s_province+$s_city+$s_county;
 	    		   if($citys == $defaultCity){
+	    			   //alert('请选择城市!');
+	    			   //return false;
 	    			   $('#defaultCity').val($city); 
 	    		   }else{
 	    			   $('#s_provinces').val($s_province);
@@ -37,7 +39,7 @@
 	    		   }
 	    		   $('#formCity').submit();		   		      			   		    		   
 	    	 });
-             $("#sharedHut").click(function(){
+           $("#sharedHut").click(function(){
 			           $defaultCitys= $("#city span").eq(0).text();
 		    		   $ss_province = $("#city span").eq(3).text();
 					   $ss_city     = $("#city span").eq(4).text();
@@ -52,14 +54,14 @@
 					   } 				   
 		    		   $('#formCity1').submit();		   		      			   		    		   
 		    	 });
-			 $("#ConditSearch").submit(function(){
+            $("#ConditSearch").submit(function(){
 			    if($('#citySelect').val()){
 					return true;
 				}else{
 				    alert('区域不能为空!');
 					return false;
 				}
-			});				
+			});
 	       });
 	       function typeName(name){
 	    	   var city = $("#citySelect").val()
@@ -111,10 +113,10 @@
 /*左侧悬浮按钮*/
 	.leftSilde{
 		width: 180px;
-		height: auto;
+		height: 470px;
 		background: #f0f0f0;
 		position: fixed;
-		left:0;
+		left:162px;
 		top:50%;
 		margin-top:58px;
 		z-index: 10000;
@@ -211,18 +213,18 @@
 		<div class="check_box" style="width: 390px;margin-right:40px;">
 			<ul>
 			 <volist name="hotelType" id="hotel">
-				<li><label><input type="radio" name="hotel_name" value="{$hotel.name}">{$hotel.name}</label></li>
+				<li><label><input type="radio" name="hotel_name" value="{$hotel.name}" <if condition="$hotel['name'] eq $hotelname">checked="checked"</if>>{$hotel.name}</label></li>
 			</volist>
 			</ul>
 		</div>
 		<div class="check_box">
 			<ul>
-				<li><label><input type="radio" name="hotel_money" value="100以下">100以下</label></li>
-				<li><label><input type="radio" name="hotel_money" value="100-300">100-300</label></li>
-				<li><label><input type="radio" name="hotel_money" value="300-500">300-500</label></li>
-				<li><label><input type="radio" name="hotel_money" value="500-1000">500-1000</label></li>
-				<li><label><input type="radio" name="hotel_money" value="1000-2000">1000-2000</label></li>
-				<li><label><input type="radio" name="hotel_money" value="2000以上">2000以上</label></li>
+				<li><label><input type="radio" name="hotel_money" value="100以下" <if condition="$memberprice eq '100以下'">checked="checked"</if>>100以下</label></li>
+				<li><label><input type="radio" name="hotel_money" value="100-300" <if condition="$memberprice eq '100-300'">checked="checked"</if>>100-300</label></li>
+				<li><label><input type="radio" name="hotel_money" value="300-500" <if condition="$memberprice eq '300-500'">checked="checked"</if>>300-500</label></li>
+				<li><label><input type="radio" name="hotel_money" value="500-1000" <if condition="$memberprice eq '500-1000'">checked="checked"</if>>500-1000</label></li>
+				<li><label><input type="radio" name="hotel_money" value="1000-2000" <if condition="$memberprice eq '1000-2000'">checked="checked"</if>>1000-2000</label></li>
+				<li><label><input type="radio" name="hotel_money" value="2000以上" <if condition="$memberprice eq '2000以上'">checked="checked"</if>>2000以上</label></li>
 			</ul>
 		   <button class="find_btn" type="submit" style="margin:-100px 0px 0px 233px;">
 				立即查找
@@ -247,33 +249,6 @@
 				<li>
 					<a href="{:U('Hotel/hotelInfo',array('hid'=>$v['id']))}" target="_blank" style="height:152px;width:100%;">
 						<div class="info_box">
-							<div class="xtb">
-								<if condition="$v['type'] eq '星级大酒店'">
-								<img src="__PUBLIC__/images/class/7.png"/>
-								<elseif condition="$v['type'] eq '城市快捷酒店'" />
-								<img src="__PUBLIC__/images/class/1.png"/>
-								<elseif condition="$v['type'] eq '青旅、公寓、太空舱'" />
-								<img src="__PUBLIC__/images/class/9.png"/>
-								<elseif condition="$v['type'] eq '主题酒店'" />
-								<img src="__PUBLIC__/images/class/10.png"/>
-								<elseif condition="$v['type'] eq '民宿农家乐'" />
-								<img src="__PUBLIC__/images/class/3.png"/>
-								<elseif condition="$v['type'] eq '度假、别墅、四合院'" />
-								<img src="__PUBLIC__/images/class/6.png"/>
-								<elseif condition="$v['type'] eq '海岛'" />
-								<img src="__PUBLIC__/images/class/11.png"/>
-								<elseif condition="$v['type'] eq '城市小区套房'" />
-								<img src="__PUBLIC__/images/class/12.png"/>
-								<elseif condition="$v['type'] eq '房车营地'" />
-								<img src="__PUBLIC__/images/class/2.png"/>
-								<elseif condition="$v['type'] eq '我的分享小屋'" />
-								<img src="__PUBLIC__/images/class/8.png"/>
-								<elseif condition="$v['type'] eq '休闲娱乐站'" />
-								<img src="__PUBLIC__/images/class/5.png"/>
-								<elseif condition="$v['type'] eq '未分类酒店'" />
-								<img src="__PUBLIC__/images/class/13.png"/>
-								</if>
-							</div>
 						<span class="pic_left"><if condition="$v.picurl eq 0"><img src="__PUBLIC__/images/no_image.gif" width="169" height="112"><else /><img src="{$siteinfo['Domain']}/hotelpic/{$v.picurl}" width="169" height="112"></if></span>
 					<h3>{$v.name|msubstr=0,18}</h3><span class="right_money">￥{$v.memberprice}/天起</span>
 					<p style="height:20px;float:left;width:200px;margin:-4px 0px 0px 13px;">{$v.type}</p>
@@ -300,7 +275,7 @@
 			<div class="height80"></div>
 			<!-- 分页 -->
 			{$page}<p style="float:left;margin:-60px 0px 0px 690px;">总记录:<span style="color:red;">{$count}</span></p>
-			<!-- end -->
+			<!-- end -->			
 			<div class="height80"></div>
 			<else />
 			  没有找到符合条件的住宿，请重设条件查询。
@@ -309,39 +284,11 @@
 		
 		<!-- 附近住宿 -->
 		<div class="book_hotel_list">
-			<if condition="$hotel_list !=0">
 			<ul>
 			<volist name="hotel_f" id="f" >
 				<li>
 					<a href="{:U('Hotel/hotelInfo',array('hid'=>$f['id']))}" target="_blank" style="height:152px;width:100%;">
 						<div class="info_box">
-							<div class="xtb">
-							<if condition="$f['type'] eq '星级大酒店'">
-							<img src="__PUBLIC__/images/class/7.png"/>
-							<elseif condition="$f['type'] eq '城市快捷酒店'" />
-							<img src="__PUBLIC__/images/class/1.png"/>
-							<elseif condition="$f['type'] eq '青旅、公寓、太空舱'" />
-							<img src="__PUBLIC__/images/class/9.png"/>
-							<elseif condition="$f['type'] eq '主题酒店'" />
-							<img src="__PUBLIC__/images/class/10.png"/>
-							<elseif condition="$f['type'] eq '民宿农家乐'" />
-							<img src="__PUBLIC__/images/class/3.png"/>
-							<elseif condition="$f['type'] eq '度假、别墅、四合院'" />
-							<img src="__PUBLIC__/images/class/6.png"/>
-							<elseif condition="$f['type'] eq '海岛'" />
-							<img src="__PUBLIC__/images/class/11.png"/>
-							<elseif condition="$f['type'] eq '城市小区套房'" />
-							<img src="__PUBLIC__/images/class/12.png"/>
-							<elseif condition="$f['type'] eq '房车营地'" />
-							<img src="__PUBLIC__/images/class/2.png"/>
-							<elseif condition="$f['type'] eq '我的分享小屋'" />
-							<img src="__PUBLIC__/images/class/8.png"/>
-							<elseif condition="$f['type'] eq '休闲娱乐站'" />
-							<img src="__PUBLIC__/images/class/5.png"/>
-							<elseif condition="$f['type'] eq '未分类酒店'" />
-							<img src="__PUBLIC__/images/class/13.png"/>
-							</if>
-						</div>
 						<span class="pic_left"><if condition="$f.picurl eq 0"><img src="__PUBLIC__/images/no_image.gif" width="169" height="112"><else /><img src="{$siteinfo['Domain']}/hotelpic/{$f.picurl}" width="169" height="112"></if></span>
 					<h3>{$f.name|msubstr=0,18}</h3>
 					<span class="right_money">￥{$f.memberprice}/天起</span>

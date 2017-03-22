@@ -113,10 +113,10 @@
 /*左侧悬浮按钮*/
 	.leftSilde{
 		width: 180px;
-		height: 470px;
+		height: auto;
 		background: #f0f0f0;
 		position: fixed;
-		left:162px;
+		left:0px;
 		top:50%;
 		margin-top:58px;
 		z-index: 10000;
@@ -249,6 +249,33 @@
 				<li>
 					<a href="{:U('Hotel/hotelInfo',array('hid'=>$v['id']))}" target="_blank" style="height:152px;width:100%;">
 						<div class="info_box">
+							<div class="xtb">
+								<if condition="$v['type'] eq '星级大酒店'">
+								<img src="__PUBLIC__/images/class/7.png"/>
+								<elseif condition="$v['type'] eq '城市快捷酒店'" />
+								<img src="__PUBLIC__/images/class/1.png"/>
+								<elseif condition="$v['type'] eq '青旅、公寓、太空舱'" />
+								<img src="__PUBLIC__/images/class/9.png"/>
+								<elseif condition="$v['type'] eq '主题酒店'" />
+								<img src="__PUBLIC__/images/class/10.png"/>
+								<elseif condition="$v['type'] eq '民宿农家乐'" />
+								<img src="__PUBLIC__/images/class/3.png"/>
+								<elseif condition="$v['type'] eq '度假、别墅、四合院'" />
+								<img src="__PUBLIC__/images/class/6.png"/>
+								<elseif condition="$v['type'] eq '海岛'" />
+								<img src="__PUBLIC__/images/class/11.png"/>
+								<elseif condition="$v['type'] eq '城市小区套房'" />
+								<img src="__PUBLIC__/images/class/12.png"/>
+								<elseif condition="$v['type'] eq '房车营地'" />
+								<img src="__PUBLIC__/images/class/2.png"/>
+								<elseif condition="$v['type'] eq '我的分享小屋'" />
+								<img src="__PUBLIC__/images/class/8.png"/>
+								<elseif condition="$v['type'] eq '休闲娱乐站'" />
+								<img src="__PUBLIC__/images/class/5.png"/>
+								<elseif condition="$v['type'] eq '未分类酒店'" />
+								<img src="__PUBLIC__/images/class/13.png"/>
+								</if>
+							</div>
 						<span class="pic_left"><if condition="$v.picurl eq 0"><img src="__PUBLIC__/images/no_image.gif" width="169" height="112"><else /><img src="{$siteinfo['Domain']}/hotelpic/{$v.picurl}" width="169" height="112"></if></span>
 					<h3>{$v.name|msubstr=0,18}</h3><span class="right_money">￥{$v.memberprice}/天起</span>
 					<p style="height:20px;float:left;width:200px;margin:-4px 0px 0px 13px;">{$v.type}</p>
@@ -289,6 +316,33 @@
 				<li>
 					<a href="{:U('Hotel/hotelInfo',array('hid'=>$f['id']))}" target="_blank" style="height:152px;width:100%;">
 						<div class="info_box">
+							<div class="xtb">
+							<if condition="$f['type'] eq '星级大酒店'">
+							<img src="__PUBLIC__/images/class/7.png"/>
+							<elseif condition="$f['type'] eq '城市快捷酒店'" />
+							<img src="__PUBLIC__/images/class/1.png"/>
+							<elseif condition="$f['type'] eq '青旅、公寓、太空舱'" />
+							<img src="__PUBLIC__/images/class/9.png"/>
+							<elseif condition="$f['type'] eq '主题酒店'" />
+							<img src="__PUBLIC__/images/class/10.png"/>
+							<elseif condition="$f['type'] eq '民宿农家乐'" />
+							<img src="__PUBLIC__/images/class/3.png"/>
+							<elseif condition="$f['type'] eq '度假、别墅、四合院'" />
+							<img src="__PUBLIC__/images/class/6.png"/>
+							<elseif condition="$f['type'] eq '海岛'" />
+							<img src="__PUBLIC__/images/class/11.png"/>
+							<elseif condition="$f['type'] eq '城市小区套房'" />
+							<img src="__PUBLIC__/images/class/12.png"/>
+							<elseif condition="$f['type'] eq '房车营地'" />
+							<img src="__PUBLIC__/images/class/2.png"/>
+							<elseif condition="$f['type'] eq '我的分享小屋'" />
+							<img src="__PUBLIC__/images/class/8.png"/>
+							<elseif condition="$f['type'] eq '休闲娱乐站'" />
+							<img src="__PUBLIC__/images/class/5.png"/>
+							<elseif condition="$f['type'] eq '未分类酒店'" />
+							<img src="__PUBLIC__/images/class/13.png"/>
+							</if>
+						</div>	
 						<span class="pic_left"><if condition="$f.picurl eq 0"><img src="__PUBLIC__/images/no_image.gif" width="169" height="112"><else /><img src="{$siteinfo['Domain']}/hotelpic/{$f.picurl}" width="169" height="112"></if></span>
 					<h3>{$f.name|msubstr=0,18}</h3>
 					<span class="right_money">￥{$f.memberprice}/天起</span>

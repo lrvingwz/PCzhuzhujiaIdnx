@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
-	<head>
+<head>
 		
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -12,94 +11,88 @@
 
 <meta name="baidu-site-verification" content="BZaPfknEb7" />
 		<title>猪猪网首页-{$siteinfo['Title']}</title>
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/font/iconfont.css">
+		<!--<link rel="stylesheet" type="text/css" href="publics.css">
+		<link rel="stylesheet" type="text/css" href="Swiper-2.7.6/dist/idangerous.swiper.css"/>-->
+	
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/idangerous.swiper.css"/>
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/public.css">
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index.css">
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/focus.css" />
+		<!--<link rel="stylesheet" type="text/css" href="__PUBLIC__/font/iconfont.css">
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/datouwang.css">
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" type="text/css" />
-		<link href="__PUBLIC__/css/city-picker.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0W7d0tVaQywDAvuFdbWYlt5QUMMP4Vi"></script>
+		<link href="__PUBLIC__/css/city-picker.css" rel="stylesheet" type="text/css" />-->
 	</head>
 
 	<body>
 		<!-- 顶部登录与欢迎 -->
-
 		<div class="head_wrap">
 			<div class="head_content">
 				<div class="head_left">
 					<ul>
-						<li>您好, 欢迎进入
-							<a href="{$siteinfo['Domain']}">猪猪网</a>
+						
+						<if condition="$_SESSION['mid'] gt 0">
+							<li>
+								欢迎回到猪猪家
+							</li>
+							<li>
+								<a href="{:U('Login/loginOut')}">退出</a>
+							</li>
+							<else />
+							<li>
+								欢迎来猪猪家
+							</li>
+							<li>
+								<a href="{:U('Login/login')}" target="_blank">登录</a>
+							</li>
+							<li>
+								<a href="{:U('Login/register')}" target="_blank">注册</a>
+							</li>
+						</if>
+						<!--<li>
+							欢迎来猪猪家
 						</li>
-						<li class="icon_address"><i class="iconfont icon-dizhi"></i>您当前所在位置：</li>
-						<li class="head_change_city">
-
-							<div id="city" style="position: relative;z-index: 9999;">
-								<input id="city-picker3" class="form-control" readonly type="text" value="" data-toggle="city-picker">
-							</div>
-							<form action="{:U('Index/dwsearch')}" method="get" id="formCity">
-								<input type="hidden" id="defaultCity" name="defaultCity" value="" />
-								<input type="hidden" id="s_provinces" name="s_provinces" value="" />
-								<input type="hidden" id="s_citys" name="s_citys" value="" />
-								<input type="hidden" id="s_countys" name="s_countys" value="" />
-								<span class="city" style="display:none;">{$_SESSION['city']}</span>
-								<span class="provinces" style="display:none;">{$_SESSION['province']}</span>
-								<input type="hidden" id="myDefaultCity" name="myDefaultCity" value="{$_SESSION['myDefaultCity']}" />
-								<input type="hidden" id="myProvince" name="myProvince" value="{$_SESSION['province']}" />
-								<input type="hidden" id="myCity" name="myCity" value="{$_SESSION['city']}" />
-								<input type="hidden" id="myCounty" name="myCounty" value="{$_SESSION['county']}" />
-							</form>
+						<li>
+							<a  href="{:U('Login/login')}" target="_blank">登录</a>
 						</li>
-						<li style="margin-left: 8px;">
-							<a href="#" id="searchCity">切换城市</a>
-						</li>
-
+						<li>
+							<a href="{:U('Login/register')}" target="_blank">注册</a>
+						</li>-->
 					</ul>
 
 				</div>
 				<div class="head_right">
 					<ul>
-						<if condition="$_SESSION['mid'] gt 0">
-							<li>
-								<a href="{:U('Member/index')}" target="_blank"><span style="color:#ccc;font-size:12px;width:250px;">欢迎&nbsp;&nbsp;{$_SESSION['mname']}&nbsp;&nbsp;{$_SESSION['mtype']}回到猪猪家平台..</span></a>
-							</li>
-							<li><i class="iconfont icon-denglu"></i>
-								<a href="{:U('Login/loginOut')}">退出</a>
-							</li>
-							<else />
-							<li><i class="iconfont icon-denglu"></i>
-								<a href="{:U('Login/login')}" target="_blank">登录</a>
-							</li>
-							<li><i class="iconfont icon-zhuce"></i>
-								<a href="{:U('Login/register')}" target="_blank">注册</a>
-							</li>
-						</if>
+						<li><i class="iconfont icon-denglu"></i>
+							<!--<a href="#">我的订单</a>-->
+						</li>
+						<li><i class="iconfont icon-zhuce"></i>
+							<!--<a href="#">我的预定</a>-->
+						</li>
+						<li><i class="iconfont icon-zhuce"></i>
+<!--							<a href="#">我的收藏</a>-->
+						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<!-- end -->
 		<!-- 头部搜索部分 -->
-		<div class="top_serch">
-			<a href="/" target="_blank">
+		<div class="top_serch clear">
+			<a href="javascript:void(0);" target="_blank">
 				<div class="top_name">
-					<img src="__PUBLIC__/images/ZZJLOGO.jpg" />
+					<!--<img src="__PUBLIC__/images/logo.png" />-->
+					<img src="__PUBLIC__/images/logo.png"/>
 				</div>
 			</a>
-			<form action="{:U('Index/sharedHut')}" method="get" id="formCity1">
-				<input type="hidden" id="defaultCitys" name="defaultCitys" value="{$_SESSION['myDefaultCitys']}" />
-				<input type="hidden" id="ss_provinces" name="ss_provinces" value="{$_SESSION['province']}" />
-				<input type="hidden" id="ss_citys" name="ss_citys" value="{$_SESSION['city']}" />
-				<input type="hidden" id="ss_countys" name="ss_countys" value="{$_SESSION['county']}" />
-				<input type="hidden" id="name" name="name" value="我的分享小屋" />
-			</form>
-			<a href="#" id="sharedHut" style="margin:60px 0px 0px 77px;float:left;color:#7B7B7B;">我的分享小屋</a>
-			<div class="right_serch">
+			<div class="top-cut">
+				<p class="city_name">贵阳</p>
+				<!--<a href="#"><img src="__PUBLIC__/images/749480191694330411.png"/></a>-->
+				<a class ="city_tab" id="searchCity" href="javascript:void(0);"><img src="__PUBLIC__/images/749480191694330411.png"/></a>
+			</div>
+			<div class="right_serch clear">
 				<form action="{:U('Index/busearch')}" method="get" id="zsform">
-					<div class="top-serch">
+					<div class="top-serch clear">
 						<ul>
-							<li style="margin-left:0;" id="all" <if condition="$_SESSION['title'] eq '全部'">class="ac"</if>>全部</li>
+							<li style="margin-left:0;" id="all" <if condition="$_SESSION['title'] eq '全部'">class="ac"</if><span>全部</span></li>
 							<li id="address" <if condition="$_SESSION['title'] eq '地址'">class="ac"</if>>地址</li>
 							<li id="names" <if condition="$_SESSION['title'] eq '名称'">class="ac"</if>>名称</li>
 						</ul>
@@ -112,48 +105,58 @@
 						<button type="submit" id="zsforms">搜索</button>
 					</div>
 				</form>
-				<div class="hot_label" style="overflow:hidden;">
-					<ul>
-						<li style="margin-left:0">热门搜索:</li>
-						<volist name="hotel_lists" id="v">
-							<li>
-								<a href="{:U('Index/hotsearch',array('id'=>$v['id'],'search_names'=>$v['name']))}" target="_blank">{$v.name}</a>
-							</li>
-						</volist>
-					</ul>
-				</div>
+			</div>
+			<div class="right-ewm">
+				<!--<img src="__PUBLIC__/images/119192073902726907.png"/>-->
+				<img src="__PUBLIC__/images/119192073902726907.png"/>
 			</div>
 		</div>
 
-		<!-- end -->
+		<!-- 导航部分-->
+		<div class="nav-margin">
+					<div class="nav_index">
+						<ul>
+							<li class="clear">
+								<!--<img src="__PUBLIC__/images/酒店分类.png"/>-->
+								<img src="__PUBLIC__/images/酒店分类.png"/>
+								<a href="{:U('Hotel/Reserve')}" target="_blank">酒店分类</a>
+							</li>
+							<li class="first_li">
+								<a href="/">首页</a>
+							</li>
+							<li>
+								<form action="{:U('Index/recommend')}" method="get" id="formRecommend">
+									<input type="hidden" id="recommendCitys" name="recommendCitys" value="" />
+									<input type="hidden" id="recommendProvince" name="recommendProvince" value="{$_SESSION['province']}" />
+									<input type="hidden" id="recommendCity" name="recommendCity" value="{$_SESSION['city']}" />
+									<input type="hidden" id="recommendCounty" name="recommendCounty" value="{$_SESSION['county']}" />
+									<a id="subRecommend" href="#">住宿推荐</a>
+								</form>
+							</li>
+							<li>
+								<a href="{:U('Hotel/Reserve')}" target="_blank">旅游推介</a>
+							</li>
+							<li>
+								<a href="{:U('Join/index')}" target="_blank">合作加盟</a>
+							</li>
+							<li>
+								<a href="{:U('Activity/index')}" target="_blank">活动公告</a>
+							</li>
+							<li>
+								<a href="#">智能家居</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 		<!-- banner部分 -->
 		<div id="wrapper">
-			<div class="fullwidthbanner-container">
-				<div class="fullwidthbanner">
-					<ul>
-						<li data-transition="turnoff" data-slotamount="15" data-masterspeed="300">
-							<img src="__PUBLIC__/images/slides/slide3.jpg" alt="" />
-						</li>
-						<!-- <li data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" data-link="#"> -->
-						<!-- <img src="__PUBLIC__/images/slides/slide4.jpg" alt="" /> -->
-						<!-- </li> -->
-						<!-- <li data-transition="papercut" data-slotamount="15" data-masterspeed="300" data-link="#"> -->
-						<!-- <img src="__PUBLIC__/images/slides/slide2.jpg" alt="" /> -->
-						<!-- </li> -->
-						<li data-transition="turnoff" data-slotamount="15" data-masterspeed="300">
-							<img src="__PUBLIC__/images/slides/slide1.jpg" alt="" />
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!-- banner表单部分 -->
+			<!-- 导航 -->
 			<div class="check_in_box">
 				<form action="{:U('Index/rollsearch')}" method="get" id="subform">
 					<div class="check_in_reserch">
-						<div class="back"></div>
+						<div class=""></div>
 						<div class="chech_content">
 							<span></span>
-							<h3>住宿查找</h3>
 							<p>选择所在地区</p>
 							<div class="add_box">
 								<select name="s_province" id="s_province" onchange="loadArea(this.value,'s_city')" style="width:100px;">
@@ -169,17 +172,7 @@
 									<option value="-1">市、县级市</option>
 								</select>
 							</div>
-							<!-- <div class="add_box">
-							<select id="s_province" name="s_province"></select>  
-    						<select id="s_city" name="s_city" style="margin-left:-6px;width:120px;"></select>  
-   							<select id="s_county" name="s_county" style="margin-left:-5px;width:120px;"></select>
-						</div>-->
-							<p style="width:100px;float:left;">入住日期</p>
-							<p style="width:191px;float:right;">离店日期</p>
-							<div class="demo1" style="float:left;width:350px;">
-								<input class="check_in_data" type="text" id="J-xl" style="width:150px;">
-								<input class="check_in_data" type="text" id="J-xls" style="width:150px;float:right;">
-							</div>
+							
 							<p>住房类型</p>
 							<select class="room_type" name="typename">
 								<option value="0">-------------------请选择住房类型------------------------</option>
@@ -198,83 +191,1067 @@
 									<option value="{$hotel.name}">-----------------{$hotel.name}----------------------</option>
 								</volist>
 							</select>
-							<div class="room_num">
-								<ul>
-									<li style="border:1px solid #ccc;">
-										<p style="width:100px;margin-top:10px;margin-left:-15px;position:absolute;z-index:1111;color:#ccc;">房间数量：</p><input type="text" name="" placeholder="" style="margin-left:70px;width:70px;border:none;"></li>
-									<li style="border:1px solid #ccc;margin-left: 27px;">
-										<p style="width:65px;margin-top:10px;margin-left:-15px;position:absolute;z-index:1111;color:#ccc;">人数：</p><input type="text" name="" placeholder="" style="margin-left:42px;width:70px;border:none;"></li>
-								</ul>
-							</div>
 							<button class="btn" type="submit">立即查找<i class="iconfont icon-jiantou"></i></button>
 						</div>
 					</div>
 				</form>
-				<!-- 导航 -->
-				<div class="nav_index">
+				<div class="grogshop-type">
 					<ul>
-						<li class="first_li">
-							<a href="/">首页</a>
+						<li>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E5%88%AB%E5%A2%85">
+								<!--<img src="images/icon_别墅.png" />-->
+								<img src="__PUBLIC__/images/icon_别墅.png"/>
+								<span>
+									别墅
+								</span>
+							</a>
 						</li>
 						<li>
-							<form action="{:U('Index/recommend')}" method="get" id="formRecommend">
-								<input type="hidden" id="recommendCitys" name="recommendCitys" value="" />
-								<input type="hidden" id="recommendProvince" name="recommendProvince" value="{$_SESSION['province']}" />
-								<input type="hidden" id="recommendCity" name="recommendCity" value="{$_SESSION['city']}" />
-								<input type="hidden" id="recommendCounty" name="recommendCounty" value="{$_SESSION['county']}" />
-								<a id="subRecommend" href="#">住宿推荐</a>
-							</form>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E5%B0%8F%E5%8C%BA%E5%A5%97%E6%88%BF">
+								<!--<img src="__PUBLIC__/images/小区套房.png" />-->
+								<img src="__PUBLIC__/images/小区套房.png"/>
+								<span>
+									小区套房
+								</span>
+							</a>
 						</li>
 						<li>
-							<a href="{:U('Hotel/Reserve')}" target="_blank">旅游推介</a>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E6%B5%B7%E5%B2%9B">
+								<!--<img src="__PUBLIC__/images/海岛.png" />-->
+								<img src="__PUBLIC__/images/海岛.png"/>
+								<span>
+									海岛
+								</span>
+							</a>
 						</li>
 						<li>
-							<a href="{:U('Join/index')}" target="_blank">合作加盟</a>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E5%88%86%E4%BA%AB">
+								<!--<img src="__PUBLIC__/images/分享小屋.png" />-->
+								<img src="__PUBLIC__/images/分享小屋.png"/>
+								<span>
+									分享小屋
+								</span>
+							</a>
 						</li>
 						<li>
-							<a href="{:U('Activity/index')}" target="_blank">活动公告</a>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E5%A8%B1%E4%B9%90">
+								<!--<img src="__PUBLIC__/images/娱乐站.png" />-->
+								<img src="__PUBLIC__/images/娱乐站.png"/>
+								<span>
+									娱乐站/棋牌
+								</span>
+							</a>
 						</li>
-
+						<li>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E5%BF%AB%E6%8D%B7%E9%85%92%E5%BA%97">
+								<!--<img src="__PUBLIC__/images/快捷酒店.png" />-->
+								<img src="__PUBLIC__/images/快捷酒店.png"/>
+								<span>
+									快捷酒店
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E6%98%9F%E7%BA%A7%E9%85%92%E5%BA%97">
+								<!--<img src="__PUBLIC__/images/星级酒店.png" />-->
+								<img src="__PUBLIC__/images/星级酒店.png"/>
+								<span>
+									星级酒店
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E9%9D%92%E6%97%85">
+								<!--<img src="__PUBLIC__/images/空间站.png" />-->
+								<img src="__PUBLIC__/images/空间站.png"/>
+								<span>
+									青旅/空间站
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E4%B8%BB%E9%A2%98%E9%85%92%E5%BA%97">
+								<!--<img src="__PUBLIC__/images/主题酒店.png" />-->
+								<img src="__PUBLIC__/images/主题酒店.png"/>
+								<span>
+									主题酒店
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E6%B0%91%E5%AE%BF%E5%AE%A2%E6%A0%88">
+								<!--<img src="__PUBLIC__/images/民宿客栈.png" />-->
+								<img src="__PUBLIC__/images/民宿客栈.png"/>
+								<span>
+									民宿客栈
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E5%85%B6%E4%BB%96">
+								<!--<img src="__PUBLIC__/images/其他.png" />-->
+								<img src="__PUBLIC__/images/其他.png"/>
+								<span>
+									其他
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.zuzuja.com/index.php/index/busearch.html?title=&getCity=&getProvince=&search_name=%E6%88%BF%E8%BD%A6">
+								<!--<img src="__PUBLIC__/images/房车.png" />-->
+								<img src="__PUBLIC__/images/房车.png"/>
+								<span>
+									房车
+								</span>
+							</a>
+						</li>
 					</ul>
-					<!--focus-->
-					<div class="focus">
-						<!--<span >
-						关注我们
-						</span>-->
-						<a href="#" class="weixin" style="margin-right: 10px;">
-							<img src="__PUBLIC__/images/focus/ewm1.png" class="ewmwx" />
-						</a>
-						<a href="#" class="qq" style="margin-right: 10px;">
-							<img src="__PUBLIC__/images/focus/qq2.png" class="ewmqq" />
-						</a>
-						<a href="#" class="mobile">
-							<img src="__PUBLIC__/images/focus/mobile_logo.png" class="ewmmobile" />
-						</a>
-					</div>
-					<!--focus-->
 				</div>
+			<div class="fullwidthbanner-container clear">
+				<div class=" fullwidthbanner clear">
+					<div class="swiper-container lunbo">
+						<ul class="swiper-wrapper fullwidthbannerL">
+							<li class="swiper-slide" data-transition="turnoff" data-slotamount="15" data-masterspeed="300">
+								<img src="http://www.zuzuja.com/hotelpic/201611m13d1532824a919.jpg" alt="" />
+							</li>
+							<li class="swiper-slide" data-transition="turnoff" data-slotamount="15" data-masterspeed="300">
+								<img src="http://www.zuzuja.com/hotelpic/201612m1d249742a454.jpg" alt="" />
+							</li>
+							<li class="swiper-slide" data-transition="turnoff" data-slotamount="15" data-masterspeed="300">
+								<img src="http://www.zuzuja.com/hotelpic/201611m13d2436618a436.jpg" alt="" />
+							</li>
+						</ul>
+						<div class="pagination">
+					    	<span class="swiper-pagination-switch"></span>
+					    	<span class="swiper-pagination-switch"></span>
+					    	<span class="swiper-pagination-switch"></span>
+					    </div>
+					</div>
+					<div class="fullwidthbannerR">
+						<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/94789.html"><img src="http://www.zuzuja.com/hotelpic/201612m5d48112a561.jpg"/></a>
+					</div>
+					<div class="fullwidthbanner-bot-l device">
+						<p>热门品牌</p>
+						<a href="javascript:void(0);" class="arrow-left"><img src="__PUBLIC__/images/609387866574705383.png"/></a>
+						<a href="javascript:void(0);" class="arrow-right"><img src="__PUBLIC__/images/318599695076243056.png"/></a>
+						<div class="swiper-container1 cont">
+						  <div class="swiper-wrapper">
+						    <div class="swiper-slide im">
+						    	<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/1.html">
+						    		<img src="http://www.zuzuja.com/hotelpic/20171m8d2647587a92.jpg"/>
+							    	<p>七天</p>
+							    	<div class=""></div>
+							    </a>
+						    </div>
+						    <div class="swiper-slide im">
+						    	<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15159.html">
+							    	<img src="http://www.zuzuja.com/hotelpic/201612m10d945435a378.jpg"/>
+							    	<p>农家乐</p>
+							    	<div class=""></div>
+						    	</a>
+						    </div>
+						    <div class="swiper-slide im">
+						    	<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/147748.html">
+							    	<img src="http://www.zuzuja.com/hotelpic/20173m2d4028882a596.jpg"/>
+							    	<p>娱乐站</p>
+							    	<div class=""></div>
+						    	</a>
+						    </div>
+						    <div class="swiper-slide im">
+						    	<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15017.html">
+							    	<img src="http://www.zuzuja.com/hotelpic/201611m13d154843a416.jpg"/>
+							    	<p>主题酒店</p>
+							    	<div class=""></div>
+						    	</a>
+						    </div>
+						    <div class="swiper-slide im">
+						    	<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/287888.html">
+							    	<img src="http://www.zuzuja.com/hotelpic/201612m5d4824999a665.jpg"/>
+							    	<p>鸡凤岛</p>
+							    	<div class=""></div>
+						    	</a>
+						    </div>
+						      <div class="swiper-slide im">
+						      	<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/1489.html">
+							    	<img src="http://www.zuzuja.com/hotelpic/20171m11d319912a393.jpg"/>
+							    	<p>青旅</p>
+							    	<div class=""></div>
+						      	</a>
+						    </div>
+						    <div class="swiper-slide im">
+						    	<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/287888.html">
+							    	<img src="http://www.zuzuja.com/hotelpic/201612m5d4824999a665.jpg"/>
+							    	<p>海岛</p>
+							    	<div class=""></div>
+							    </a>
+						    </div>
+						  </div>
+						    
+						</div>
+					</div>
+					<div class="fullwidthbanner-bot-r">
+						<p>特价酒店</p>
+						<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15017.html"><img src="http://www.zuzuja.com/hotelpic/201611m13d154843a416.jpg"/></a>
+					</div>
+				</div>
+			</div>
+			<div class="wrapper-login">
+				<div class="wrapper-login-top">
+					<div>
+						<!--<img src="__PUBLIC__/images/图层-8.png"/>-->
+						<img src="__PUBLIC__/images/图层-8.png"/>
+						<p>Hi&nbsp;&nbsp;你好</p>
+					</div>
+					<div>
+						<!--<a href="{:U('Login/login')}" target="_blank">登录</a>
+						<a href="{:U('Login/register')}" target="_blank">注册</a>
+						<a href="#">入住</a>-->
+						<if condition="$_SESSION['mid'] gt 0">
+								<a style="margin-left: 100px;" href="{:U('Login/loginOut')}">退出</a>
+							<else />
+								<a style="margin-left: 55px;" href="{:U('Login/login')}" target="_blank">登录</a>
+								<a href="{:U('Login/register')}" target="_blank">注册</a>
+								<!--<a href="#">入住</a>-->
+						</if>
+					</div>
+				</div>
+				<div class="wrapper-login-bot">
+					<ul class="navt-top clear">
+						<li>
+							<span class="navt-span">游记</span>
+							<span>头条</span>
+							<span>公告</span>
+						</li>
+					</ul>
+					<ul class="navt-bot">
+						<li>
+							<a href="http://www.zuzuja.com/index.php/article/detail/id/10.html" style="font-size: 14px;"><p>世界那么大，我想去走走</p></a>
+							<a href="http://www.zuzuja.com/index.php/article/detail/id/14.html" style="font-size: 14px;"><p>杭州名宿：民宿爱好者的天堂</p></a>
+							<a href="http://www.zuzuja.com/index.php/article/detail/id/17.html" style="font-size: 14px;"><p>2017怎么玩?</p></a>
+						</li>
+						<li>
+							<a href="http://www.zuzuja.com/index.php/article/detail/id/7.html" style="font-size: 14px;"><p>猪猪家网正式成立</p></a>
+							<a href="http://www.zuzuja.com/index.php/article/detail/id/8.html" style="font-size: 14px;"><p>猪猪家分部成立</p></a>
+							<a href="http://www.zuzuja.com/index.php/article/detail/id/9.html" style="font-size: 14px;"><p>猪猪家给您拜年了</p></a>
+						</li>
+						<li>
+							<a href="http://www.zuzuja.com/index.php/activity/index.html" style="font-size: 14px;"><p>猪猪家全城招募免费租住人活动策划方案</p></a>
+						</li>
+					</ul>
+				</div>
+				<div class="gywm">
+					<ul>
+						<li>
+							<a href="{$siteinfo['Domain']}/zhuzhujiaProjV1.zip">
+								<!--<img src="__PUBLIC__/images/741340315853447602.png"/>-->
+								<img src="__PUBLIC__/images/741340315853447602.png"/>
+								<p>软件下载</p>
+							</a>
+						</li>
+						<li>
+							<a  href="{$siteinfo['Domain']}/admin.php" target="_blank">
+								<!--<img src="__PUBLIC__/images/271484617184320372.png"/>-->
+								<img src="__PUBLIC__/images/271484617184320372.png"/>
+								<p>商家会员</p>
+							</a>
+						</li>
+						<li>
+							<a href="{:U('Login/login')}" target="_blank">
+								<!--<img src="__PUBLIC__/images/902983125641875551.png"/>-->
+								<img src="__PUBLIC__/images/902983125641875551.png"/>
+								<p>个人会员</p>
+							</a>
+						</li>
+						<li>
+							<a href="{:U('Category/getCategory',array('id'=>1))}" target="_blank">
+								<!--<img src="__PUBLIC__/images/440279152682595059.png"/>-->
+								<img src="__PUBLIC__/images/440279152682595059.png"/>
+								<p>关于我们</p>
+							</a>
+						</li>
+						<li>
+							<!--<a href="#">
+								<img src=""/>
+								<p></p>
+							</a>-->
+						</li>
+						<li>
+							<!--<a href="#">
+								<img src=""/>
+								<p></p>
+							</a>-->
+						</li>
+					</ul>
+				</div>
+			</div>
+			
 				<!-- end -->
 			</div>
-			<!-- 咨询QQ -->
-			<div class="left_qq">
-				<ul>
-					<li style="background: none;font-size: 20px;">&gt;</li>
-					<li style="background:none;color:#191919;line-height: 15px; ">预<br/>定<br/>/<br/>咨<br/>询</li>
-					<li style="margin-top:50px;">
-						<a href="tencent://message/?uin={$siteinfo['QQ1']}&Site=&Menu=yes" target="_blank"><img src="__PUBLIC__/images/left_qq_li_qq.png" alt="qq图片" /></a>
+		</div>
+		<!-- end -->
+		<div class="goot-type">
+			<!--<div id="daiyanbao_com_content" closerate="4" playrate="-3" style="position: fixed;_position: absolute;text-align: left;overflow: visible;bottom :0px;right:0px;display:block; z-index:999;"><script src="//res.daiyanbao.com/freevideojs/306/1/0851-86868238.js"></script></div>-->			
+			<div class="goot-type-up">
+				<div class="goot-type-hd">
+					<p>—————&nbsp;&nbsp;<img src="__PUBLIC__/images/热门.png"/>&nbsp;&nbsp;热门分类&nbsp;&nbsp;————</p>
+				</div>
+				<ul class="goot-type-list clear">
+					<li>
+						<div class="li1">
+							<div class="li1-lt clear">
+								<div>星级大酒店</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li1-up clear">
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/13.html"><img src="http://www.zuzuja.com/roompic/201611m13d1040417a839.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳程天精品酒店</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15021.html"><img src="http://www.zuzuja.com/roompic/20171m18d3847997a994.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳凯莱时尚酒店</span>
+									</div>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15026.html"><img src="http://www.zuzuja.com/hotelpic/201611m13d2436618a436.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳隆源国际大酒店</span>
+								</div>
+							</div>
+							<div class="li1-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15033.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d4259389a328.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳悦鑫店花园店</span>
+								</div>
+								<div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15036.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d204184a199.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳南国妃思酒店</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15032.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d5536263a229.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳迷你酒店</span>
+									</div>
+								</div>
+							</div>
+						</div>
 					</li>
 					<li>
-						<a href="tencent://message/?uin={$siteinfo['QQ2']}&Site=&Menu=yes" target="_blank"><img src="__PUBLIC__/images/left_qq_li_qq.png" alt="qq图片" /></a>
+						<div class="li2 clear">
+							<div class="li2-lt clear">
+								<div>快捷酒店</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li2-up clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/13.html"><img src="http://www.zuzuja.com/hotelpic/20171m8d2647587a92.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳程天精品酒店</span>
+								</div>
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/21.html"><img src="http://www.zuzuja.com/hotelpic/201611m12d485566a360.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳永逸酒店</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15018.html"><img src="http://www.zuzuja.com/hotelpic/201611m13d279333a110.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳商港酒店</span>
+									</div>
+								</div>
+							</div>
+							<div class="li2-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15015.html"><img src="http://www.zuzuja.com/hotelpic/201611m12d44479a253.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳向日葵酒店</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15019.html"><img src="http://www.zuzuja.com/hotelpic/201611m12d134883a858.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳荣和酒店</span>
+								</div>
+							</div>
+							<div class="li2-bot">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15028.html"><img src="http://www.zuzuja.com/hotelpic/201611m15d520582a103.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳摩尔春天酒店</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15027.html"><img src="http://www.zuzuja.com/hotelpic/201611m13d144044a640.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">如家快捷酒店</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15041.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d4018997a403.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳荷泰时尚酒店</span>
+								</div>
+							</div>
+						</div>
 					</li>
 					<li>
-						<a href="tencent://message/?uin={$siteinfo['QQ3']}&Site=&Menu=yes" target="_blank"><img src="__PUBLIC__/images/left_qq_li_qq.png" alt="qq图片" /></a>
+						<div class="li3 clear">
+							<div class="li3-lt clear">
+								<div>空间站</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li3-up clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15020.html"><img src="http://www.zuzuja.com/hotelpic/201611m12d3224799a495.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳星岛公寓</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15058.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d176977a212.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳百灵公寓</span>
+								</div>
+							</div>
+							<div class="li3-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/23353.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">杭州钱塘江酒店公寓</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/23364.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">杭州汪星球青年旅社</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/23488.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">杭州青瓷精品酒店式公寓</span>
+								</div>
+							</div>
+							<div class="li3-bot">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/23414.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">杭州EAC国际公寓酒店</span>
+								</div>
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15178.html"><img src="http://www.zuzuja.com/hotelpic/201612m12d4136125a946.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳心悦家庭公寓</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15175.html"><img src="http://www.zuzuja.com/hotelpic/201612m12d1731575a966.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳优格青年胶囊旅馆</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="li4 clear">
+							<div class="li4-lt clear">
+								<div>主题酒店</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li4-up clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15017.html"><img src="http://www.zuzuja.com/hotelpic/201611m13d154843a416.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳果果酒店喷水池店</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15056.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d364970a31.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳苏豪酒店喷水池店</span>
+								</div>
+							</div>
+							<div class="li4-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15068.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d3347650a979.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳金阳索菲酒店</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15073.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d236206a791.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳左岸精品酒店</span>
+								</div>
+							</div>
+							<div class="li4-bot">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15085.html"><img src="http://www.zuzuja.com/hotelpic/201612m2d1357684a307.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳尚客主题酒店小十字店</span>
+								</div>
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15145.html"><img src="http://www.zuzuja.com/hotelpic/201612m12d181388a67.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳裕阳庭院风情酒店</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15173.html"><img src="http://www.zuzuja.com/hotelpic/201612m12d2825834a362.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳绿环酒店</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="li5 clear">
+							<div class="li5-lt clear">
+								<div>民宿农家乐</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li5-up clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15224.html"><img src="http://www.zuzuja.com/hotelpic/201612m10d3058382a709.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">青岩古镇枫林晚客栈</span>
+								</div>
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15291.html"><img src="http://www.zuzuja.com/hotelpic/201612m14d1013336a120.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳云尚小筑精品客栈</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15159.html"><img src="http://www.zuzuja.com/hotelpic/201612m10d945435a378.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳跃然梧桐客栈</span>
+									</div>
+								</div>
+							</div>
+							<div class="li5-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15296.html"><img src="http://www.zuzuja.com/hotelpic/201612m10d159166a157.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳息烽吉祥客栈</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15418.html"><img src="http://www.zuzuja.com/hotelpic/201612m14d327897a135.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳德源山庄</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15298.html"><img src="http://www.zuzuja.com/hotelpic/201612m14d3550879a60.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳如苑花园客栈</span>
+								</div>
+							</div>
+							<div class="li5-bot">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15520.html"><img src="http://www.zuzuja.com/hotelpic/201612m17d492451a70.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳云尚莲花精品客栈</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15547.html"><img src="http://www.zuzuja.com/hotelpic/201612m17d5938353a711.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳蓬莱农家乐</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15740.html"><img src="http://www.zuzuja.com/hotelpic/201612m16d3927130a246.jpg	"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳青年旅社</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="li6 clear">
+							<div class="li6-lt clear">
+								<div>别墅</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li6-up clear">
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15631.html"><img src="http://www.zuzuja.com/hotelpic/201611m30d1730303a203.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">金翠湖休闲度假圣地</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15330.html"><img src="http://www.zuzuja.com/hotelpic/201612m10d223808a682.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳水调歌头度假酒店</span>
+									</div>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/147454.html"><img src="http://www.zuzuja.com/hotelpic/201611m30d2923103a127.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳多彩城市客栈清镇店</span>
+								</div>
+							</div>
+							<div class="li6-bot">
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15742.html"><img src="http://www.zuzuja.com/hotelpic/201612m10d5023345a124.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳南江大峡谷酒店</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/16377.html"><img src="http://www.zuzuja.com/hotelpic/201611m15d4627877a288.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳高尔夫会所</span>
+									</div>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/147143.html"><img src="http://www.zuzuja.com/hotelpic/20173m1d42454a349.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">息烽县福源客栈</span>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="goot-type-z">
+					<div class="swiper-container2">
+						<ul class="swiper-wrapper">
+							<li class="swiper-slide">
+								<!--<a href="#"><img src="__PUBLIC__/images/116762645961462243.png"/></a>-->
+								<a href="#"><img src="__PUBLIC__/images/116762645961462243.png"/></a>
+							</li>
+							<li class="swiper-slide">
+								<!--<a href="#"><img src="__PUBLIC__/images/201829613393164675.png"/></a>-->
+								<a href="#"><img src="__PUBLIC__/images/201829613393164675.png"/></a>
+							</li>
+							<li class="swiper-slide">
+								<!--<a href="#"><img src="__PUBLIC__/images/401472202539099637.png"/></a>-->
+								<a href="#"><img src="__PUBLIC__/images/401472202539099637.png"/></a>
+							</li>
+							<li class="swiper-slide">
+								<!--<a href="#"><img src="__PUBLIC__/images/440717636675567157.png"/></a>-->
+								<a href="#"><img src="__PUBLIC__/images/440717636675567157.png"/></a>
+							</li>
+							<li class="swiper-slide">
+								<!--<a href="#"><img src="__PUBLIC__/images/483089154645186866.png"/></a>-->
+								<a href="#"><img src="__PUBLIC__/images/483089154645186866.png"/></a>
+							</li>
+							<li class="swiper-slide">
+								<!--<a href="#"><img src="__PUBLIC__/images/633155381545554314.png"/></a>-->
+								<a href="#"><img src="__PUBLIC__/images/633155381545554314.png"/></a>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"><img src="__PUBLIC__/images/813769519429251811.png"/></a>
+								<!--<a href="#"><img src="__PUBLIC__/images/813769519429251811.png"/></a>-->
+							</li>
+						</ul>
+					</div>
+				</div>
+				<ul class="goot-type-list clear">
+					<li>
+						<div class="li1">
+							<div class="li1-lt clear">
+								<div>分享小屋</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li1-up clear">
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/19.html"><img src="http://www.zuzuja.com/hotelpic/20173m13d920745a902.jpg
+											"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳花果园U区9栋</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15427.html"><img src="http://www.zuzuja.com/hotelpic/201612m14d3749680a509.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳宜家公寓</span>
+									</div>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15496.html"><img src="http://www.zuzuja.com/hotelpic/201612m13d4648373a576.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳天空之城短租公寓</span>
+								</div>
+							</div>
+							<div class="li1-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15712.html"><img src="http://www.zuzuja.com/hotelpic/201612m13d205940a222.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳温馨日租房</span>
+								</div>
+								<div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/147151.html"><img src="http://www.zuzuja.com/hotelpic/201612m20d4144474a596.jpg	"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳龙福日租房</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/147340.html"><img src="http://www.zuzuja.com/hotelpic/201612m23d28325a137.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳东旭日租房</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="li2 clear">
+							<div class="li2-lt clear">
+								<div>海岛</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li2-up clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/390196.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">AdminHotel</span>
+								</div>
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/287888.html"><img src="http://www.zuzuja.com/hotelpic/201612m5d4824999a665.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">广东鸡凤岛</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/322348.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">大亚湾南湾岛休闲</span>
+									</div>
+								</div>
+							</div>
+							<div class="li2-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/294718.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">肇庆鼎湖避暑山庄</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15019.html"><img src="http://www.zuzuja.com/hotelpic/201611m12d134883a858.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳荣和酒店</span>
+								</div>
+							</div>
+							<div class="li2-bot">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15028.html"><img src="http://www.zuzuja.com/hotelpic/201611m15d520582a103.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳摩尔春天酒店</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15027.html"><img src="http://www.zuzuja.com/hotelpic/201611m13d144044a640.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">如家快捷酒店</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15041.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d4018997a403.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳荷泰时尚酒店</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="li3 clear">
+							<div class="li3-lt clear">
+								<div>小区套房</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li3-up clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/144038.html"><img src="http://www.zuzuja.com/hotelpic/201611m17d5547936a926.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">黔南荔波豪庭宾馆</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/144043.html"><img src="http://www.zuzuja.com/hotelpic/201611m17d243888a755.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">黔南龙里聚贤旅社</span>
+								</div>
+							</div>
+							<div class="li3-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/144807.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">凯里桃园小筑</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/291891.html"><img src="http://www.zuzuja.com/hotelpic/201612m9d2929633a356.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳花果园国际中心</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/293757.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">镇远桃源小筑</span>
+								</div>
+							</div>
+							<div class="li3-bot">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/145186.html"><img src="http://www.zuzuja.com/hotelpic/20172m17d2924618a19.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">黔东南平安吉利招待所</span>
+								</div>
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/144240.html"><img src="http://www.zuzuja.com/hotelpic/201611m18d5212210a24.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">黔南荔波雅园农庄</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/144040.html"><img src="http://www.zuzuja.com/hotelpic/201611m17d2729377a649.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">黔南荔波鸿雁楼宾馆</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="li4 clear">
+							<div class="li4-lt clear">
+								<div>房车</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li4-up clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/107697.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">北京喜迎迎农家院</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/113285.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">北京赖斯摩尔宿营地</span>
+								</div>
+							</div>
+							<div class="li4-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/107479.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">北京丛林鸟户外休闲营地住宿</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/302465.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">北京市霍营地铁口</span>
+								</div>
+							</div>
+							<div class="li4-bot">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/434545.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">房车露营地</span>
+								</div>
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/367732.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">杭州鸬鸟房车露营公园</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/438698.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">临安月亮湾房车营地</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="li5 clear">
+							<div class="li5-lt clear">
+								<div>娱乐站</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li5-up clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/147748.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">百花湖星苑商务会议中心</span>
+								</div>
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/107291.html"><img src="http://www.zuzuja.com/hotelpic/20171m15d222322a87.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">北京济州岛健身俱乐部</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/107687.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">北京垄上会所</span>
+									</div>
+								</div>
+							</div>
+							<div class="li5-dw clear">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/107797.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">北京汉拿山国际俱乐部</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/107162.html"><img src="http://www.zuzuja.com/hotelpic/20171m16d4821678a241.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">北京中央国家机关后勤干部培训基地宾馆</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/108004.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">北京私处PARTY聚会房</span>
+								</div>
+							</div>
+							<div class="li5-bot">
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/109298.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">北京风格港湾康体俱乐部</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/108448.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">房山石花洞玫瑰香缘休闲俱乐部</span>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/109973.html"><img src="__PUBLIC__/images/652420287716023787.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">北京雁栖湖国际高尔夫俱乐部</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="li6 clear">
+							<div class="li6-lt clear">
+								<div>其他</div>
+								<div>
+									<h5>热门TOP</h5>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%8C%97%E4%BA%AC%E5%B8%82">北京</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E4%B8%8A%E6%B5%B7%E5%B8%82">上海</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E5%B9%BF%E5%B7%9E%E5%B8%82">广州</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E6%B7%B1%E5%9C%B3%E5%B8%82">深圳</a>
+									<a href="http://www.zuzuja.com/index.php/index/searcharea.html?citySelect=%E8%B4%B5%E9%98%B3%E5%B8%82">贵阳</a>
+								</div>
+							</div>
+							<div class="li6-up clear">
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15017.html"><img src="http://www.zuzuja.com/hotelpic/201611m13d154843a416.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳果果酒店喷水池店</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15029.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d249742a454.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳果果酒店纪念塔店</span>
+									</div>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15029.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d249742a454.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳果果酒店纪念塔店</span>
+								</div>
+							</div>
+							<div class="li6-bot">
+								<div class="clear">
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15064.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d523795a403.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳夏末花开主题公寓</span>
+									</div>
+									<div class="pstion">
+										<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15056.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d364970a31.jpg"/></a>
+										<div class="opct"></div>
+										<span class="opct-sp">贵阳苏豪酒店喷水池店</span>
+									</div>
+								</div>
+								<div class="pstion">
+									<a href="http://www.zuzuja.com/index.php/hotel/hotelinfo/hid/15074.html"><img src="http://www.zuzuja.com/hotelpic/201612m1d1826210a355.jpg"/></a>
+									<div class="opct"></div>
+									<span class="opct-sp">贵阳玫瑰酒店</span>
+								</div>
+							</div>
+						</div>
 					</li>
 				</ul>
 			</div>
-			<!-- end -->
 		</div>
-		<!-- end -->
-
 		<!-- 底部 -->
 		<div class="class75"></div>
 		<div class="foot">
@@ -378,8 +1355,8 @@
 
 		<div id="allmap"></div>
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/js/idangerous.swiper.min.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/js/jquery.banner.revolution.min.js"></script>
-		<script type="text/javascript" src="__PUBLIC__/js/banner.js"></script>
 		<script src="__PUBLIC__/js/area.js" type="text/javascript"></script>
 		<script type="text/javascript" src="__PUBLIC__/laydate.dev.js"></script>
 		<script type="text/javascript">
@@ -388,66 +1365,47 @@
 		<script src="__PUBLIC__/js/city-picker.data.js"></script>
 		<script src="__PUBLIC__/js/city-picker.js"></script>
 		<script src="__PUBLIC__/js/main.js"></script>
-		<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('.bdsharebuttonbox').css('width', '100%');
-				$('.top-serch>ul>li').click(function() {
-					$(this).addClass('ac').siblings().removeClass('ac');
+		<script>
+			$(document).ready(function(){
+				$('.navt-top').on("click","span",function(){
+		            var i = $(this).index();
+		            $(this).addClass('navt-span').siblings().removeClass('navt-span');
+		            $('.navt-bot>li').eq(i).show().siblings().hide();
+		       });
+		       var mySwiper = new Swiper('.swiper-container', {
+					autoplay : 3000,//可选选项，自动滑动
+					loop : true,//可选选项，开启循环
+					pagination : '.pagination',
+				})
+				var mySwiper1 = new Swiper('.swiper-container1', {
+					slidesPerView : 3,
+					
 				});
-				$("#searchCity").click(function() {
-					$defaultCity = $("#city span").eq(0).text();
-					$city = $(".city").eq(0).text();
-					$s_province = $("#city span").eq(3).text();
-					$s_city = $("#city span").eq(4).text();
-					$s_county = $("#city span").eq(5).text();
-					$citys = $defaultCity + $s_province + $s_city + $s_county;
-					if($citys == $defaultCity) {
-						alert("请选择城市!");
-						return false;
-						$('#defaultCity').val($city);
-					} else {
-						$('#defaultCity').val($city);
-						$('#s_provinces').val($s_province);
-						$('#s_citys').val($s_city);
-						$('#s_countys').val($s_county);
+				$(".arrow-left").on("click",function(e){
+					console.log("sdads")
+					e.preventDefault();
+					mySwiper1.swipePrev();
+				});
+				$(".arrow-right").on("click",function(e){
+					console.log("sdads")
+					e.preventDefault();
+					mySwiper1.swipeNext();
+				})
+				var mySwiper2 = new Swiper('.swiper-container2', {
+					slidesPerView : 6,
+				});
+				var i =0;
+				$(".city_tab").on("click",function(){
+					i++;
+					console.log(i)
+					if(i%2==0){
+						$(".check_in_reserch").hide();
+					}else{
+						$(".check_in_reserch").show();
 					}
-					$('#formCity').submit();
-					setCookie("defaultCity", $citys);
-					localStorage.setItem('name', 'Tom');
-				});
-				$("#sharedHut").click(function() {
-					$defaultCitys = $("#city span").eq(0).text();
-					$city = $(".city").eq(0).text();
-					$ss_province = $("#city span").eq(3).text();
-					$ss_city = $("#city span").eq(4).text();
-					$ss_county = $("#city span").eq(5).text();
-					$citys = $defaultCitys + $ss_province + $ss_city + $ss_county;
-					if($citys == $defaultCitys) {
-						/* if($defaultCitys !=''){
-							   alert('请选择城市!');
-							   return false;
-						   }else{
-							   return true;
-						   } */
-						//alert($city);
-						$('#defaultCitys').val($city);
-					} else {
-						$('#ss_provinces').val($ss_province);
-						$('#ss_citys').val($ss_city);
-						$('#ss_countys').val($ss_county);
-					}
-					$('#formCity1').submit();
-				});
-				$("#subform").submit(function() {
-					if($('#s_province').val() != '省份') {
-						return true;
-					} else {
-						alert('省份不能为空!');
-						return false;
-					}
-				});
-
+					
+				})
+				
 				$("#zsforms").click(function() {
 					var strs = $("#search_name").val();
 					var city = $(".city").eq(0).text();
@@ -462,136 +1420,64 @@
 					$("#search_name").val(str); //去除文章中间空格						
 					$('#zsform').submit();
 				});
-
-			});
-		</script>
-
-		<script type="text/javascript">
-			$(document).ready(function() {
-				var getCity = $(".city").text();
-				var myDefaultCity = $("#myDefaultCity").val();
-				if(myDefaultCity.length != 0 && myDefaultCity != '') {
-					var textPl = $('#selectBox');
-					var textVal = textPl.text();
-					setTimeout(function() {
-						if(textVal != '') {
-							if(myDefaultCity != '') {
-								$("#selectBox").text(myDefaultCity);
-							}
+				function typeName(name){
+		    	   $("#hotel_name").val(name);
+			       $('#hotelType').submit();		   		      			   		    		   
+		        }
+				$("#all").click(function() {
+					$(this).css({"background":"#00C454","color":"#FFFFFF"}).siblings().css({"background":"#F1F1F1","color":"#000000"});
+					$search_name = $("#search_name").val();
+					var city = $(".city").eq(0).text();
+					var province = $(".provinces").eq(0).text();
+					$("#getCity").val(city);
+					$("#getProvince").val(province);
+					$("#title").val('全部');
+				})
+				$("#address").click(function() {
+					$search_name = $("#search_name").val();
+					var city = $(".city").eq(0).text();
+					var province = $(".provinces").eq(0).text();
+					$("#getCity").val(city);
+					$("#getProvince").val(province);
+					$("#title").val('地址');
+					$(this).css({"background":"#00C454","color":"#FFFFFF"}).siblings().css({"background":"#F1F1F1","color":"#000000"})
+				})
+				$("#names").click(function() {
+					$search_name = $("#search_name").val();
+					var city = $(".city").eq(0).text();
+					var province = $(".provinces").eq(0).text();
+					$("#getCity").val(city);
+					$("#getProvince").val(province);
+					$("#title").val('名称');
+					$(this).css({"background":"#00C454","color":"#FFFFFF"}).siblings().css({"background":"#F1F1F1","color":"#000000"})
+				})
+	
+				$("#subRecommend").click(function() {
+					var city = $(".city").eq(0).text();
+					var myDefaultCity = $("#myDefaultCity").val();
+					var myProvince = $("#myProvince").val();
+					var myCity = $("#myCity").val();
+					var myCounty = $("#myCounty").val();
+					var province = $(".provinces").text();
+					if(myDefaultCity == '') {
+						if(city != '') {
+							$("#recommendCitys").val(city);
 						}
-					}, 500);
-				} else {
-					getMap();
-				}
-				$("#title").val('全部');
-				var textPl = $('#selectBox');
-				var textVal = textPl.text();
-				var defaultCity = $("#myDefaultCity").val();
-				var province = $("#myProvince").val();
-				var city = $("#myCity").val();
-				var county = $("#myCounty").val();
-				var defaultCity = $("#city span").eq(0).text();
-				setTimeout(function() {
-					if(textVal != '') {
-						if(province != '' || city != '' || county != '') {
-							$("#selectBox").text(province + city + county);
-						} else if(defaultCity != '请选择省/市/区') {
-							$("#selectBox").text(defaultCity);
+						if(province != '') {
+							$("#recommendProvince").val(province);
 						}
-
-					}
-				}, 500);
-			})
-
-			$("#formCity").submit(function() {
-				var defaultCity = $("#city span").eq(0).text();
-				var myDefaultCity = $("#myDefaultCity").val();
-				var city = $(".city").eq(0).text();
-				if(defaultCity == myDefaultCity) {
-					alert('请选择城市!');
-					return false;
-				} else {
-					var textPl = $('#selectBox');
-					var textVal = textPl.text();
-					$("#defaultCity").val('');
-					$("#defaultCitys").val('');
-					$("#selectBox").text();
-					$("#myDefaultCity").val('');
-					$("#myProvince").val('');
-					$("#myCity").val('');
-					$("#myCounty").val('');
-					return true;
-				}
-			})
-
-			$("#all").click(function() {
-				$search_name = $("#search_name").val();
-				var city = $(".city").eq(0).text();
-				var province = $(".provinces").eq(0).text();
-				$("#getCity").val(city);
-				$("#getProvince").val(province);
-				$("#title").val('全部');
-			})
-			$("#address").click(function() {
-				$search_name = $("#search_name").val();
-				var city = $(".city").eq(0).text();
-				var province = $(".provinces").eq(0).text();
-				$("#getCity").val(city);
-				$("#getProvince").val(province);
-				$("#title").val('地址');
-			})
-			$("#names").click(function() {
-				$search_name = $("#search_name").val();
-				var city = $(".city").eq(0).text();
-				var province = $(".provinces").eq(0).text();
-				$("#getCity").val(city);
-				$("#getProvince").val(province);
-				$("#title").val('名称');
-			})
-
-			$("#subRecommend").click(function() {
-				var city = $(".city").eq(0).text();
-				var myDefaultCity = $("#myDefaultCity").val();
-				var myProvince = $("#myProvince").val();
-				var myCity = $("#myCity").val();
-				var myCounty = $("#myCounty").val();
-				var province = $(".provinces").text();
-				if(myDefaultCity == '') {
-					if(city != '') {
-						$("#recommendCitys").val(city);
-					}
-					if(province != '') {
-						$("#recommendProvince").val(province);
-					}
-				} else {
-					$("#recommendCitys").val('');
-					$("#recommendProvince").val(myProvince);
-					$("#recommendProvince").val(myCity);
-					$("#recommendProvince").val(myCounty);
-				}
-
-				$('#formRecommend').submit();
-			});
-
-			function getMap() {
-				var map = new BMap.Map("allmap");
-				var textBtn = $('.placeholder');
-				var geolocation = new BMap.Geolocation();
-				geolocation.getCurrentPosition(function(r) {
-					if(this.getStatus() == BMAP_STATUS_SUCCESS) {
-						var mk = new BMap.Marker(r.point);
-
-						textBtn.text(r.address.province + r.address.city);
-						$(".city").text(r.address.city);
-						$(".provinces").text(r.address.province);
 					} else {
-						alert('failed' + this.getStatus());
+						$("#recommendCitys").val('');
+						$("#recommendProvince").val(myProvince);
+						$("#recommendProvince").val(myCity);
+						$("#recommendProvince").val(myCounty);
 					}
-				}, {
-					enableHighAccuracy: true
+	
+					$('#formRecommend').submit();
 				});
-			}
+			})
 		</script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0W7d0tVaQywDAvuFdbWYlt5QUMMP4Vi"></script>
 	</body>
 
 </html>

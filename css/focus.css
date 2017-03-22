@@ -1,0 +1,100 @@
+*{
+	padding:0;
+	margin:0; 
+}
+ul,li{
+	list-style: none;
+}
+a{
+	text-decoration: none; 
+}
+body{
+	font-family: "微软雅黑";
+}
+
+
+#wrapper .check_in_box .nav_index  div{
+	float: left;
+	margin-left: 100px;
+	width: 250px;
+	height: 100%;
+	margin-top: -5px;
+	/*text-align: center;*/
+	/*line-height: 57px;*/
+}
+/*#wrapper .check_in_box .nav_index  div span{
+	display: inline-block;
+	color: #ffffff;
+	overflow: auto;
+	padding-bottom: 23px;
+	box-sizing: border-box;
+}*/
+#wrapper .check_in_box .nav_index div .weixin{
+	display: inline-block;
+	width: 47px;
+	height: 57px;
+	line-height: 1;
+	margin: 0 auto;
+	margin-top: 4px;
+	background: url(../images/focus/wx12.png) no-repeat;
+	opacity: .5;
+}
+#wrapper .check_in_box .nav_index div .qq{
+	display: inline-block;
+	margin: 0 auto;
+	width: 47px;
+	height: 57px;
+	background: url(../images/focus/qq11.png) no-repeat;
+	opacity: .5;
+}
+#wrapper .check_in_box .nav_index div .mobile{
+	display: inline-block;
+	margin: 0 auto;
+	width: 47px;
+	height: 57px;
+	background: url(../images/focus/m5.png) no-repeat;
+	opacity: .5;
+}
+#wrapper .check_in_box .nav_index div .weixin .ewmwx{
+	position: relative;
+	width: 150px;
+	height: 150px;
+	top: -160px;
+	right: 54px;
+	display: none;
+	border: 1px solid ;
+	border-radius: 10px;
+}
+#wrapper .check_in_box .nav_index div .ewmqq{
+	position: relative;
+	width: 150px;
+	height: 180px;
+	top: -190px;
+	right: 54px;
+	display: none;
+	border: 5px solid #ffffff;
+	border-radius: 10px;
+}
+#wrapper .check_in_box .nav_index div .ewmmobile{
+	position: relative;
+	width: auto;
+	height: auto;
+	top: -50px;
+	right: 54px;
+	display: none;
+	border: 5px solid #ffffff;
+	border-radius: 10px;
+}
+#wrapper .check_in_box .nav_index div:hover{
+	opacity: 1;
+}
+#wrapper .check_in_box .nav_index div .weixin:hover,
+#wrapper .check_in_box .nav_index div .qq:hover,
+#wrapper .check_in_box .nav_index div .mobile:hover{
+	opacity: 1;
+}
+#wrapper .check_in_box .nav_index div .weixin:hover .ewmwx,
+#wrapper .check_in_box .nav_index div .qq:hover .ewmqq,
+#wrapper .check_in_box .nav_index div .mobile:hover .ewmmobile{
+	display: block;
+}
